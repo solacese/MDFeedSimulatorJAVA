@@ -1,0 +1,71 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.2.1.RELEASE")
+    }
+}
+
+// Apply the java plugin to add support for Java
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+    id 'org.springframework.boot' version '3.2.3'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+project.version = '1.0.4'
+
+repositories {
+	mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+   
+    implementation("log4j:log4j:1.2.9")
+	implementation("com.googlecode.json-simple:json-simple:1.1.1")
+	implementation("com.solacesystems:sol-jcsmp:10.2.0")
+	
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/java' 
+        }
+    }
+}
+
+bootJar {
+    mainClass = 'com.solace.demos.trading.MDFeedhandler'
+    archiveBaseName = 'MarketDataFeedhandler'
+    archiveVersion =  ''
+    
+    copy {
+        from bootJar
+        into "."
+    }
+
+}
+
+/*
+bootJar {
+    mainClassName = 'com.solace.demos.trading.PortfolioManager'
+    baseName = 'PortfolioManager'
+    version =  ''
+    
+    copy {
+        from bootJar
+        into "."
+    }
+    
+}
+
+*/
