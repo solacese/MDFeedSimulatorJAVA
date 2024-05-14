@@ -61,7 +61,7 @@ public class MDFeedhandler {
 		// If there is not a log4j.properties in the current working directory, use the one bundled in jar.
 		checkForLog4jConfigFile();
 		
-		log.info("Initializing MDFeedhandler version 1.0.4");
+		log.info("Initializing MDFeedhandler version 1.0.5");
 		
 		MDFeedhandler mdPublisher = new MDFeedhandler();
 		if(mdPublisher.parseArgs(args) ==1 || mdPublisher.validateParams() ==1) {
